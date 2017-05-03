@@ -4,11 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose=require('mongoose');
+//var mongoose=require('mongoose');
+require('isomorphic-fetch');
 
 
-global.dbHandle=require("./dbbase/dbHandle.js");
-global.db=mongoose.connect("mongodb://workbench_user:1234567@ds062339.mlab.com:62339/instant_noodle_db");//"mongodb://localhost:27017/reactNote""mongodb://192.168.99.100:666/reactNote"
+//global.dbHandle=require("./dbbase/dbHandle.js");
+//global.db=mongoose.connect("mongodb://workbench_user:1234567@ds062339.mlab.com:62339/instant_noodle_db");//"mongodb://localhost:27017/reactNote""mongodb://192.168.99.100:666/reactNote"
 // "mongodb://localhost:27017/reactNote"
 //"mongodb://<dbuser>:<dbpassword>@ds062339.mlab.com:62339/instant_noodle_db"
 var routes = require('./routes/index');

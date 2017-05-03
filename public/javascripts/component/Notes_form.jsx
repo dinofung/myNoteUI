@@ -8,8 +8,9 @@ class Notes_form extends React.Component{
 		if(this.refs.title.value=="") return;
 		var newNote={
 			title : this.refs.title.value,
-			description : this.refs.description.value,
-			date : "posted @"+new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+" "+new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds()
+			content : this.refs.content.value,
+			createTime : new Date()
+			//"posted @"+new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+" "+new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds()
 		};
 		this.refs.yout_form.reset();
 		this.props.onNewNote(newNote);
@@ -24,7 +25,7 @@ class Notes_form extends React.Component{
 				<form ref="yout_form" action="#" className="note_form" style={ style } onSubmit={ this.handleSubmit.bind(this) }>
 					<h5>笔记</h5>
 					<input ref="title" type="text" className="your_title" placeholder="你的笔记的标题"/>
-					<textarea ref="description" className="your_description" placeholder="笔记的内容"/>
+					<textarea ref="content" className="your_content" placeholder="笔记的内容"/>
 					<input type="button" value="取消" className="cancel_btn" onClick={ this.props.onToggleForm }/>
 					<input type="submit" value="确认" className="confirm_btn"/>
 				</form>

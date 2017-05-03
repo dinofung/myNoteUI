@@ -8,45 +8,45 @@ import Notes_form from "../component/Notes_form.jsx";
 import Notes_list from "../component/Notes_list.jsx";
 import "../../stylesheets/style.scss";
 
-class Notes extends React.Component{
-	constructor(props){
+class Notes extends React.Component {
+	constructor(props) {
 		super(props);
-		this.state={
-			formDisplayed : false
+		this.state = {
+			formDisplayed: false
 		};
 	}
 
-	componentDidMount(){
-		this.props.dispatch( initNotes() );
+	componentDidMount() {
+		this.props.dispatch(initNotes());
 	}
 
-	onToggleForm(){
+	onToggleForm() {
 		this.setState({
-			formDisplayed : !this.state.formDisplayed
+			formDisplayed: !this.state.formDisplayed
 		});
 	}
 
-	onNewNote(newNote){
-		this.props.dispatch( addNote(newNote) );
+	onNewNote(newNote) {
+		this.props.dispatch(addNote(newNote));
 	}
 
-	onDeleteNote(date){
+	onDeleteNote(_id) {
 		/*根据日期来删除笔记*/
-		var delete_date={
-			date : date
+		var delete_date = {
+			_id: _id
 		};
-		this.props.dispatch( deleteNote(delete_date) );
+		this.props.dispatch(deleteNote(delete_date));
 	}
 
-	render(){
+	render() {
 		const { notes } = this.props;
-		return(
+		return (
 			<div className="container">
-				<Notes_header onToggleForm={ this.onToggleForm.bind(this) }/>
+				<Notes_header onToggleForm={this.onToggleForm.bind(this)} />
 				<div className="container_main">
-					<Notes_form onToggleForm={ this.onToggleForm.bind(this) } 
-					formDisplayed={ this.state.formDisplayed } onNewNote={ this.onNewNote.bind(this) }/>
-					<Notes_list notes={ notes } onDeleteNote={ this.onDeleteNote.bind(this) }/>
+					<Notes_form onToggleForm={this.onToggleForm.bind(this)}
+						formDisplayed={this.state.formDisplayed} onNewNote={this.onNewNote.bind(this)} />
+					<Notes_list notes={notes} onDeleteNote={this.onDeleteNote.bind(this)} />
 				</div>
 			</div>
 		);
@@ -54,18 +54,19 @@ class Notes extends React.Component{
 }
 
 Notes.propTypes = {
-	notes : PropTypes.arrayOf(
-			PropTypes.shape({
-				title : PropTypes.string.isRequired,
-				description : PropTypes.string.isRequired,
-				date : PropTypes.string.isRequired
-			}).isRequired
-		).isRequired
+	notes: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string.isRequired,
+			content: PropTypes.string.isRequired,
+			createTime: PropTypes.string.isRequired,
+			_id: PropTypes.string.isRequired,
+		}).isRequired
+	).isRequired
 }
 
-function select(state){
-	return{
-		notes : state.notes
+function select(state) {
+	return {
+		notes: state.notes
 	}
 }
 
