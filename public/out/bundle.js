@@ -25941,7 +25941,7 @@
 						_react2.default.createElement(
 							"h2",
 							null,
-							"React \u7B14\u8BB0"
+							"My React \u7B14\u8BB0"
 						),
 						_react2.default.createElement("input", { type: "button", value: "\u6DFB\u52A0\u7B14\u8BB0", className: "add_note_btn", onClick: this.props.onToggleForm })
 					)
